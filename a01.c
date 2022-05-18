@@ -3,10 +3,9 @@
 #include <time.h>
 
 
-//int min(int arr1[], int size1);
-//int max(int arr2[], int size2);
-//int avg(int arr4[], size4);
-void printArr(int size5, int arr5[]);
+int findMin(int arr1[], int size1);
+int findMax(int arr2[], int size2);
+void printArr(int size3, int arr3[]);
 
 
 
@@ -14,11 +13,16 @@ void printArr(int size5, int arr5[]);
 
 int main() {
 	
-	int vals[100] = {0};
+	int vals[1000] = {0};
 	int i = 0;
 	int x = 0;
+	int index1 = 0;
+	int index2 = 0;
 	int fees = 0;
 	int sum = 0;
+	int min = 0;
+	int max = 0;
+	int avg = 0;
 	
 	srand(time(NULL));
 	
@@ -34,9 +38,14 @@ int main() {
 			}
 		sum = vals[i] + sum;
 	}
-		
-	puts("");
-	puts("--Summary--");
+	
+	index1 = findMin(vals, x);
+	min = vals[index1];
+	
+	index2 = findMax(vals, x);
+	max = vals[index2];
+	
+	avg = sum / x;
 	
 	printf("Account Balance: $%d", sum - fees);
 	puts("");
@@ -45,10 +54,10 @@ int main() {
 	puts("");
 	
 	puts("---Transaction Statistics---");
-	//printf("min: %5d loc: %6d\n", min, index);
-	//printf("max: %5d loc: %6d\n", max, index);
+	printf("Min: %5d Loc: %5d\n", min, index1);
+	printf("Max: %5d Loc: %5d\n", max, index2);
 	printf("Sum: %5d\n", sum);
-	//printf("avg: %5d\n", avg);
+	printf("Avg: %5d\n", avg);
 	
 	puts("");
 	puts("");
@@ -61,19 +70,40 @@ int main() {
 }
 
 
-//int min(arr1[a])
+int findMin(int arr1[], int size1) {
+	
+	int i;
+	int j = 0;
+	
+	for (i = 1; i < size1; i++) {
+		if (arr1[i] < arr1[j]) {
+			j = i;
+		}
+	}
+	return j;
+}
 
 
-//int max(arr2[b])
+int findMax(int arr2[], int size2) {
+	
+	int i;
+	int j = 0;
+	
+	for (i = 1; i < size2; i++) {
+		if (arr2[i] > arr2[j]) {
+			j = i;
+		}
+	}
+	return j;
+	
+}
 
 
-//int avg(arr4[d])
-
-void printArr(int size5, int arr5[]){
+void printArr(int size3, int arr3[]){
 	
 	int i; 
-	for(i = 0; i < size5; i++){
-		printf("%3d | %4d\n", i,  arr5[i]);
+	for(i = 0; i < size3; i++){
+		printf("%3d | %4d\n", i,  arr3[i]);
 	}
 	return;
 	
