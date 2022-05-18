@@ -47,6 +47,7 @@ int main() {
 	
 	avg = sum / x;
 	
+	puts("--Summary--");
 	printf("Account Balance: $%d", sum - fees);
 	puts("");
 	printf("Total Fees: $%d", fees);
